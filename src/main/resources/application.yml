@@ -1,0 +1,55 @@
+#配置端口号
+server:
+  port: 8080
+  servlet:
+    context-path: /nynu
+
+spring:
+  #配置数据库连接
+  datasource:
+    url: jdbc:mysql://localhost:3306/springboot?serverTimezone=UTC&useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #druid增强配置
+    type: com.alibaba.druid.pool.DruidDataSource
+    #初始化大小
+    initialSize: 5
+    #最小
+    minIdle: 5
+    #最大
+    maxActive: 20
+    #配置连接超时时间设置
+    maxWait: 60000
+  #配置redis连接
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  #配置nacos
+  application:
+    #指定服务在nacos中的名字
+    name: nacos-provider
+  cloud:
+    nacos:
+      discovery:
+        #nacos服务地址
+        server-addr: 127.0.0.1:8848
+
+#dubbo:
+#  protocol:
+#    name: dubbo
+#    port: 20880
+
+#mybatis配置
+mybatis:
+  #配置mapper的包扫描，找到所有的mapper.xml文件
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  #开启驼峰命名法
+  configuration:
+    map-underscore-to-camel-case: true
+
+#日志配置
+#logging:
+#  level:
+#    com.nynu.springboot: debug
+
